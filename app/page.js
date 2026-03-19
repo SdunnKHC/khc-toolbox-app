@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-const GOOGLE_SCRIPT_URL = "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqiydYvwWvyEc14orE5RziwcyZS5An_YQokkoq_GF-F7fiulbEoEVF4R8jtQ3gY4AGZw/exec";
 
 export default function Page() {
   const topics = ["Silt fence","Inlet protection","Sediment basins","Dust control","Heat stress","Cold weather"];
