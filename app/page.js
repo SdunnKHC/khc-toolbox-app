@@ -3,30 +3,52 @@ import { useState } from 'react';
 
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqiydYvwWvyEc14orE5RziwcyZS5An_YQokkoq_GF-F7fiulbEoEVF4R8jtQ3gY4AGZw/exec";
 
-export default function Page() {
-  const topics = [
-    "Heavy rain prep and response","Mud hazards and slipping","Inspecting BMPs after storms",
-    "Silt fence repairs","Inlet protection after rainfall","Erosion from disturbed soil",
-    "Stormwater flow awareness","Equipment in wet conditions","Tracking sediment onto roads",
-    "Drainage path awareness",
-    "Heat stress and hydration","Fatigue in high heat","Dust control","Working long hours safely",
-    "PPE in hot weather","Equipment overheating","Hydration planning","Sun exposure",
-    "Working on dry loose soil","Increased production risks",
-    "Seeding and stabilization safety","Preparing for colder weather","Leaf buildup in drains",
-    "Changing daylight conditions","Wet mornings / dry afternoons","Slope stabilization",
-    "Storm prep before winter","Material storage","Crew communication",
-    "Inspecting aging BMPs",
-    "Cold stress and frostbite","Frozen ground hazards","Working in rain","Vehicle safety in mud",
-    "Equipment warm-up safety","Layered PPE","Short daylight hazards","Slippery surfaces",
-    "Storm event response","Maintaining BMPs in winter",
-    "Silt fence installation","Inlet protection install","Sediment basin work",
-    "Wattles and check dams","Working on slopes","Excavator safety","Spotter communication",
-    "Backing trucks safely","Trailer loading/unloading","Hand tool safety","Power tool safety",
-    "Slip/trip/fall prevention","Hazard recognition","PPE requirements",
-    "Keeping sediment on site","Jobsite communication","Working around traffic",
-    "Utility awareness","Material handling","Housekeeping","Equipment inspections"
-  ];
+// ✅ FULL TOPIC LIST (correct)
+const topics = [
+  // Spring
+  "Heavy rain prep and response","Mud hazards and slipping","Inspecting BMPs after storms",
+  "Silt fence repairs","Inlet protection after rainfall","Erosion from disturbed soil",
+  "Stormwater flow awareness","Equipment in wet conditions","Tracking sediment onto roads",
+  "Drainage path awareness",
 
+  // Summer
+  "Heat stress and hydration","Fatigue in high heat","Dust control","Working long hours safely",
+  "PPE in hot weather","Equipment overheating","Hydration planning","Sun exposure",
+  "Working on dry loose soil","Increased production risks",
+
+  // Fall
+  "Seeding and stabilization safety","Preparing for colder weather","Leaf buildup in drains",
+  "Changing daylight conditions","Wet mornings / dry afternoons","Slope stabilization",
+  "Storm prep before winter","Material storage","Crew communication",
+  "Inspecting aging BMPs",
+
+  // Winter
+  "Cold stress and frostbite","Frozen ground hazards","Working in rain","Vehicle safety in mud",
+  "Equipment warm-up safety","Layered PPE","Short daylight hazards","Slippery surfaces",
+  "Storm event response","Maintaining BMPs in winter",
+
+  // General
+  "Silt fence installation","Inlet protection install","Sediment basin work",
+  "Wattles and check dams","Working on slopes","Excavator safety","Spotter communication",
+  "Backing trucks safely","Trailer loading/unloading","Hand tool safety","Power tool safety",
+  "Slip/trip/fall prevention","Hazard recognition","PPE requirements",
+  "Keeping sediment on site","Jobsite communication","Working around traffic",
+  "Utility awareness","Material handling","Housekeeping","Equipment inspections"
+];
+
+// ✅ FULL CREW LIST (separate from topics)
+const crew = [
+  "Martir Reyes (Saul)","Yunior Luciano","Walter Silva","Beny Garcia","Jose Lopez",
+  "Ronald Orellana","Santose Romero","Edgar Arce Agoino","Miguel Duran","Arturo Contreras",
+  "Francisco Quintanilla","Christian Romero","Martir Orellana","Roger Orellana","Jose Gonzalez",
+  "Angel Hernandez","Erick Alvarado","Rodrigo Garcia","Emmanuel Guerrero","Marvin Landaverde",
+  "Juan Orellana","Wilmer E Ruiz Garcia","Brandon Gurdian","Emerson Garcia","Ricardo Irias",
+  "Alberto Sierra",
+  "Steven Dunn","Christopher Mayberry","Justin Sanders","Jose Lobo","Randy Sandoli",
+  "Krysten Mayberry","Megan Wright","Thomas Corso","Jorge Rivera","Jorge Guerrero","Bret Mayberry"
+];
+
+export default function Page() {
   const [form,setForm]=useState({
     topic:'',date:'',weather:'',location:'Waxhaw',supervisor:'',notes:'',attendees:Array(30).fill('')
   });
@@ -37,7 +59,7 @@ export default function Page() {
   };
 
   return (
-    <div style={{padding:16,maxWidth:500,margin:'auto',color:'white'}}>
+    <div style={{padding:16,maxWidth:500,margin:'auto'}}>
       <h2>KHC Toolbox Talk</h2>
 
       <select style={{width:'100%',padding:10,marginBottom:10}}
@@ -76,15 +98,26 @@ export default function Page() {
 
       <h4>Attendees (30)</h4>
       <div style={{maxHeight:200,overflowY:'scroll',marginBottom:10}}>
-        {form.attendees.map((a,i)=>(
-          <input key={i} placeholder={`Person ${i+1}`} 
-            style={{width:'100%',padding:8,marginBottom:5}}
-            onChange={e=>{
-              const updated=[...form.attendees];
-              updated[i]=e.target.value;
-              setForm({...form,attendees:updated});
-            }}/>
-        ))}
+        {form.attendees.map((a,i)=>{
+          // ✅ prevent duplicates
+          const available = crew.filter(name => !form.attendees.includes(name) || name === a);
+
+          return (
+            <select key={i}
+              value={a}
+              style={{width:'100%',padding:8,marginBottom:5}}
+              onChange={e=>{
+                const updated=[...form.attendees];
+                updated[i]=e.target.value;
+                setForm({...form,attendees:updated});
+              }}>
+              <option value="">Select Person</option>
+              {available.map((name,idx)=>(
+                <option key={idx} value={name}>{name}</option>
+              ))}
+            </select>
+          );
+        })}
       </div>
 
       <button onClick={handleSubmit}
