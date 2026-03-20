@@ -93,7 +93,19 @@ export default function Page() {
       <input placeholder="Supervisor" style={{width:'100%',padding:10,marginBottom:10}}
         onChange={e=>setForm({...form,supervisor:e.target.value})}/>
 
-      <textarea placeholder="Notes" style={{width:'100%',padding:10,marginBottom:10}}
+      <div style={{marginBottom:10}}>
+        <strong>Talking Points:</strong>
+        <ul style={{paddingLeft:20, marginTop:5}}>
+          <li>Hazards related to today’s Topic</li>
+          <li>Required PPE</li>
+          <li>Equipment / tool risks</li>
+          <li>Ground conditions / footing</li>
+          <li>Keeping sediment on site</li>
+          <li>Job-specific hazards</li>
+        </ul>
+      </div>
+
+      <textarea placeholder="Notes / What was discussed" style={{width:'100%',padding:10,marginBottom:10}}
         onChange={e=>setForm({...form,notes:e.target.value})}/>
 
       <h4>Attendees (30)</h4>
