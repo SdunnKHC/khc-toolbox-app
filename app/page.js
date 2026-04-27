@@ -38,9 +38,9 @@ const topics = [
 
 // ✅ FULL CREW LIST (separate from topics)
 const crew = [
-  "Martir Reyes (Saul)","Yunior Luciano","Walter Silva","Beny Garcia","Jose Lopez",
+  "Martir Reyes (Saul)","Nelson Flores","Walter Silva","Beny Garcia","Jose Lopez",
   "Ronald Orellana","Santose Romero","Edgar Arce Agoino","Miguel Duran","Arturo Contreras",
-  "Francisco Quintanilla","Christian Romero","Roger Orellana","Jose Gonzalez",
+  "Francisco Quintanilla","Christian Romero","Roger Orellana",
   "Angel Hernandez","Erick Alvarado","Rodrigo Garcia","Emmanuel Guerrero","Marvin Landaverde",
   "Juan Orellana","Wilmer E Ruiz Garcia","Brandon Gurdian","Emerson Garcia","Ricardo Irias",
   "Alberto Sierra",
