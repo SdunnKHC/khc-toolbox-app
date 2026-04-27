@@ -40,11 +40,11 @@ const topics = [
 const crew = [
   "Martir Reyes (Saul)","Yunior Luciano","Walter Silva","Beny Garcia","Jose Lopez",
   "Ronald Orellana","Santose Romero","Edgar Arce Agoino","Miguel Duran","Arturo Contreras",
-  "Francisco Quintanilla","Christian Romero","Martir Orellana","Roger Orellana","Jose Gonzalez",
+  "Francisco Quintanilla","Christian Romero","Roger Orellana","Jose Gonzalez",
   "Angel Hernandez","Erick Alvarado","Rodrigo Garcia","Emmanuel Guerrero","Marvin Landaverde",
   "Juan Orellana","Wilmer E Ruiz Garcia","Brandon Gurdian","Emerson Garcia","Ricardo Irias",
   "Alberto Sierra",
-  "Steven Dunn","Christopher Mayberry","Justin Sanders","Jose Lobo","Randy Sandoli",
+  "Steven Dunn","Christopher Mayberry","Justin Sanders","Jose Lobo","Seth Clark","Randy Sandoli",
   "Krysten Mayberry","Megan Wright","Thomas Corso","Jorge Rivera","Jorge Guerrero","Bret Mayberry"
 ];
 
